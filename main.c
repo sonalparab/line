@@ -11,12 +11,15 @@ int main() {
   screen s;
   color c;
 
+  clear_screen(s);
+
+  //code used for gallery
+  /*
   c.red = 0;
   c.green = 0;
   c.blue = MAX_COLOR;
 
-  clear_screen(s);
-
+  //axes
   draw_line(250,0,250,500,s,c);
   draw_line(0,250,500,250,s,c);
 
@@ -42,7 +45,6 @@ int main() {
   draw_line(312,312,437,437,s,c);
   draw_line(312,437,437,312,s,c);
 
-
   c.red = 0;
   c.green = 191;
   c.blue = MAX_COLOR;
@@ -65,6 +67,43 @@ int main() {
   draw_line(250,180,500,180,s,c);
   draw_line(500,180,375,0,s,c);
   draw_line(375,0,250,180,s,c);
+  */
+  
+
+  c.red = 0;
+  c.green = MAX_COLOR;
+  c.blue = 0;
+  
+  clear_screen(s);
+  //octants 1 and 5
+  draw_line(0, 0, XRES-1, YRES-1, s, c);
+  draw_line(0, 0, XRES-1, YRES / 2, s, c);
+  draw_line(XRES-1, YRES-1, 0, YRES / 2, s, c);
+
+  //octants 8 and 4
+  c.blue = 255;
+  draw_line(0, YRES-1, XRES-1, 0, s, c);
+  draw_line(0, YRES-1, XRES-1, YRES/2, s, c);
+  draw_line(XRES-1, 0, 0, YRES/2, s, c);
+
+  //octants 2 and 6
+  c.red = 255;
+  c.green = 0;
+  c.blue = 0;
+  draw_line(0, 0, XRES/2, YRES-1, s, c);
+  draw_line(XRES-1, YRES-1, XRES/2, 0, s, c);
+
+  //octants 7 and 3
+  c.blue = 255;
+  draw_line(0, YRES-1, XRES/2, 0, s, c);
+  draw_line(XRES-1, 0, XRES/2, YRES-1, s, c);
+
+  //horizontal and vertical
+  c.blue = 0;
+  c.green = 255;
+  draw_line(0, YRES/2, XRES-1, YRES/2, s, c);
+  draw_line(XRES/2, 0, XRES/2, YRES-1, s, c);
+
 
   display(s);
   save_extension(s, "lines.png");
